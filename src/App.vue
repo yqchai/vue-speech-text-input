@@ -1,17 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div  v-for="msg in messages">
+      <p>{{ msg }}</p>
+    </div>
+    <speech-text-input :onSubmit="submitMsg"></speech-text-input>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import SpeechTextInput from '@/components/SpeechTextInput.vue'
 export default {
   name: 'app',
+  data(){
+    return {
+      messages:[]
+    }
+  },
   components: {
-    HelloWorld
+    SpeechTextInput
+  },
+  methods:{
+    submitMsg(value){
+      this.messages.push(value)
+    }
   }
 }
 </script>
